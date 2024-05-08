@@ -9,7 +9,7 @@ from rembg import remove
 # client = openai.OpenAI(api_key="sk-proj-11iQpnbfPtbYOtv7v86PT3BlbkFJNMSJmpCfX0UdUMoGIs1U")
 # api key는 나중에 환경 변수로 대체될 예정
 
-def call_dalle(description: str, gender: int):
+def call_dalle(description: str, gender: str):
     # print('generating img..')
 
     # response = client.images.generate(

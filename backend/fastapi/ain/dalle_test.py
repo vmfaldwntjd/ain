@@ -21,7 +21,7 @@ def call_dalle(description: str, gender: str):
     # url = response.data[0].url
     # print('img generated. \nurl: ' + url)
 
-    url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWsH2CX6NjQ2gla_1pBu8PAP1e8VHv5naf0OPFWcAOHA&s'
+    url = 'https://ain-bucket.s3.ap-northeast-2.amazonaws.com/da6c9a6a-f0ce-4c6d-aa96-ff81ad5d24a9.png'
 
     # URL에서 이미지 데이터 가져오기
     response = requests.get(url)

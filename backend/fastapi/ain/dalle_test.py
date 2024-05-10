@@ -1,17 +1,18 @@
+import os
+
 import openai
 from PIL import Image
 import requests
 from io import BytesIO
 from rembg import remove
 
-
 # Replace YOUR_API_KEY with your OpenAI API key
-# client = openai.OpenAI(api_key="sk-proj-11iQpnbfPtbYOtv7v86PT3BlbkFJNMSJmpCfX0UdUMoGIs1U")
-# api key는 나중에 환경 변수로 대체될 예정
+client = openai.OpenAI(api_key=os.environ["DALLE_API_KEY"])
+
 
 def call_dalle(description: str, gender: str):
     # print('generating img..')
-
+    #
     # response = client.images.generate(
     #     model="dall-e-2",
     #     prompt="a cute cat with a hat on",

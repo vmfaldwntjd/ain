@@ -11,18 +11,24 @@ client = openai.OpenAI(api_key=os.environ["DALLE_API_KEY"])
 
 
 def call_dalle(description: str, gender: str):
-    # print('generating img..')
-    #
-    # response = client.images.generate(
-    #     model="dall-e-2",
-    #     prompt="a cute cat with a hat on",
-    #     size="256x256",
-    #     n=1,
-    # )
-    # url = response.data[0].url
-    # print('img generated. \nurl: ' + url)
+    print('generating img..')
 
-    url = 'https://ain-bucket.s3.ap-northeast-2.amazonaws.com/62c3b595-615e-4def-b0f7-600e1871731f.png'
+    response = client.images.generate(
+        model="dall-e-3",
+        prompt=
+        '"gender": ' + gender + '\n' + """
+            "default prompt": "Generate a photo-realistic frontal image of a person in neat clothing.",
+            "style": "photo-realistic",
+            "size": "256x256",
+            "nationality": "Korean"
+            "Composition and framing": "The face and upper body should be centered in the image, and The face should occupy half of the image."
+            "Detailed description of the character": """
+        + description,
+        size="1024x1024",
+        n=1,
+    )
+    url = response.data[0].url
+    print('img generated. \nurl: ' + url)
 
     # URL에서 이미지 데이터 가져오기
     response = requests.get(url)
@@ -30,14 +36,10 @@ def call_dalle(description: str, gender: str):
 
     # BytesIO 객체로 메모리에 이미지 데이터를 로드
     img = Image.open(BytesIO(response.content))
+    img = img.resize((256,256))
 
     print('removing bg..')
     trimmed_img = remove(img)
     print('bg removed.')
 
     return trimmed_img
-
-## 체크사항
-# 사이즈 정사각형
-# 한국인
-# 옷 입힐 것 (옷 안 입을 때 종종 있음)

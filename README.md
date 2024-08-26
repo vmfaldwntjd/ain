@@ -92,7 +92,7 @@
 
 <p>
 
-# 🔍2. 주요 기능
+# 🔍2. 화면 구성 소개
 
 ## 1️⃣ 회원가입 및 로그인
 <img src="https://github.com/ykim-yeji/ain/assets/68416691/216bf97e-8577-4763-aadf-42fd9dd337f1" width=30% height=30%/>
